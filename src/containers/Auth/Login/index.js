@@ -84,7 +84,7 @@ class Login extends ValidationComponent {
   }
 
   navigateTo(name, props) {
-    this.RBSheet.close();
+    // this.RBSheet.close();
     Navigation.push(this.props.componentId, {
       component: {
         name,

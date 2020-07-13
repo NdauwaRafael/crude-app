@@ -86,7 +86,7 @@ const MenuContent = ({
                 {user.name}
               </Text>
               <Text note style={{fontSize: responsiveFontSize(2)}}>
-                Personal Investment Account
+                Personal Profile
               </Text>
             </View>
           </ListItem>
@@ -117,123 +117,7 @@ const MenuContent = ({
             </Body>
           </ListItem>
 
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => goToMenu('Calculator')}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="calculator"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Investment Calculator</Text>
-            </Body>
-          </ListItem>
 
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('Contact');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="phone"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Contact Us</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('ListDocuments');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="folder-alt"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>My Documents</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('Statements');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="cloud-download"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Statements</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToProductsTab();
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="layers"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Products</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('LocationList');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="EvilIcons"
-                name="location"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Location</Text>
-            </Body>
-          </ListItem>
 
           <ListItem
             Icon

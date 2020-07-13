@@ -47,25 +47,29 @@ export const SignIn = (username, password, easyAccess) => async (dispatch) => {
   dispatch(loadingLogin(true));
   try {
     let response = await api.login(username, password);
-
-    if (response.status === 200){
+    dispatch(loadingLogin(false));
+    if (response.status === 200) {
       let responseData = await response.json();
       dispatch(loginSuccess(responseData.token, getDate()));
       goHome();
+    } else {
+      dispatch(loginFailed());
+      return EventRegister.emit('showToastMessage', {
+        show: true,
+        message: "Username or password combination don't match",
+        timeout: 5000,
+      });
     }
-    else  {
-
-    }
-
   } catch (e) {
     dispatch(loginFailed());
-    console.log(e);
+    dispatch(loadingLogin(false));
+
     EventRegister.emit('showToastMessage', {
       show: true,
       message: 'Oops! An error occurred',
       timeout: 5000,
     });
-  };
+  }
 };
 
 //LOGOUT

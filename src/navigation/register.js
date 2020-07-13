@@ -27,6 +27,9 @@ import Registration from '../containers/Auth/Registration';
 //Home
 import Home from '../containers/Home';
 
+import Accounts from '../containers/Accounts';
+import Contact from '../containers/Contact';
+
 export function registerScreens() {
   //AUTH
   Navigation.registerComponent(
@@ -86,6 +89,30 @@ export function registerScreens() {
       </Provider>
     ),
     () => Home,
+  );
+
+  //Contact
+  Navigation.registerComponent(
+    'Contact',
+    () => (props) => (
+      <Provider store={store}>
+        <RootComponent PassedComponent={Contact} privateProps={props} />
+        {/*<Home {...props} />*/}
+      </Provider>
+    ),
+    () => Contact,
+  );
+
+  //Accounts
+  Navigation.registerComponent(
+    'Accounts',
+    () => (props) => (
+      <Provider store={store}>
+        <RootComponent PassedComponent={Accounts} privateProps={props} />
+        {/*<Home {...props} />*/}
+      </Provider>
+    ),
+    () => Accounts,
   );
 
   //Menu
