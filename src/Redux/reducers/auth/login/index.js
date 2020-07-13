@@ -8,6 +8,8 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAILED,
   LOADING_LOGIN,
+  LOADING_USER,
+  USER_SUCCESS,
 } from '../../../constants/ActionTypes';
 
 const initialState = {
@@ -17,6 +19,7 @@ const initialState = {
   user: {},
   token: '',
   loggedIn: false,
+  isLoadingUser: false,
 };
 
 export default (state = initialState, action) => {
@@ -41,6 +44,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.status,
+      };
+
+    case LOADING_USER:
+      return {
+        ...state,
+        isLoadingUser: action.status,
+      };
+
+    case USER_SUCCESS:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return state;

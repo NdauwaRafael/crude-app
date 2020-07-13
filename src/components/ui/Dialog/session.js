@@ -106,7 +106,7 @@ class Session extends Component {
               minHeight: 150,
             }}>
             <View style={{flex: 1, justifyContent: 'space-between'}}>
-              <Text style={{color: '#eeeeee', fontSize: 14}}>
+              <Text style={{color: '#3f4441', fontSize: 14}}>
                 You have been logged out due to inactivity. You will have to
                 login again
               </Text>

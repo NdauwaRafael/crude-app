@@ -14,12 +14,8 @@ export const LOGOUT_FAILED = 'LOGOUT_FAILED';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAILED = 'AUTH_SUCCESS';
 
-export const SUBMITTING_TOKEN = 'SUBMITTING_TOKEN';
-export const LOADING_TOKEN = 'LOADING_TOKEN';
-export const TOKEN_ERROR = 'TOKEN_ERROR';
-
-export const SAVE_CREDS = 'SAVE_CREDS';
-export const DELETE_CREDS = 'DELETE_CREDS';
+export const LOADING_USER = 'LOADING_USER';
+export const USER_SUCCESS = 'USER_SUCCESS';
 
 //Root
 export const SET_IS_ACTIVE = 'SET_IS_ACTIVE';

@@ -9,3 +9,6 @@
 export const route_login = function (baseUrl) {
   return baseUrl + '/api/login';
 };
+export const route_user = function (baseUrl) {
+  return baseUrl + '/api/user/1';
+};

@@ -30,6 +30,9 @@ import Home from '../containers/Home';
 import Accounts from '../containers/Accounts';
 import Contact from '../containers/Contact';
 
+import Profile from '../containers/Profile';
+import ComingSoon from '../containers/ComingSoon';
+
 export function registerScreens() {
   //AUTH
   Navigation.registerComponent(
@@ -115,11 +118,35 @@ export function registerScreens() {
     () => Accounts,
   );
 
+  //Profile
+  Navigation.registerComponent(
+    'Profile',
+    () => (props) => (
+      <Provider store={store}>
+        <RootComponent PassedComponent={Profile} privateProps={props} />
+        {/*<Home {...props} />*/}
+      </Provider>
+    ),
+    () => Profile,
+  );
+
+  //ComingSoon
+  Navigation.registerComponent(
+    'ComingSoon',
+    () => (props) => (
+      <Provider store={store}>
+        <RootComponent PassedComponent={ComingSoon} privateProps={props} />
+        {/*<Home {...props} />*/}
+      </Provider>
+    ),
+    () => ComingSoon,
+  );
+
   //Menu
   Navigation.registerComponent(
     'navigation.Drawer',
     () => (props) => {
-      let NavigationComponent = RNNDrawer(SideMenu);
+      let NavigationComponent = RNNDrawer.create(SideMenu);
       return (
         <Provider store={store}>
           <NavigationComponent {...props} />

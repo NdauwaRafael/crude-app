@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@codler/native-base": "^2.14.2",
     "@react-native-community/netinfo": "^5.9.4",
     "@react-native-community/picker": "^1.6.5",
     "@react-native-community/toolbar-android": "0.1.0-rc.2",

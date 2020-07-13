@@ -8,6 +8,7 @@ import {bindActionCreators} from 'redux';
 import {Logout} from '../../Redux/actions/auth/login';
 import {Navigation} from 'react-native-navigation';
 import {getInitial} from './partials/functions';
+import {RNNDrawer} from 'react-native-navigation-drawer-extension';
 
 class SideMenu extends Component {
   constructor(props) {
@@ -15,36 +16,20 @@ class SideMenu extends Component {
 
     this.logout = this.logout.bind(this);
     this.goToMenu = this.goToMenu.bind(this);
-    this.goToProductsTab = this.goToProductsTab.bind(this);
   }
 
   logout() {
     this.props.logout();
-    Navigation.dismissDrawer();
+    RNNDrawer.dismissDrawer();
   }
 
   goToMenu(name) {
-    Navigation.dismissDrawer();
+    RNNDrawer.dismissDrawer();
     Navigation.push(this.props.parentComponentId, {
       component: {
         name,
         passProps: {
           notTab: true,
-        },
-      },
-    });
-  }
-
-  goToProductsTab() {
-    Navigation.dismissDrawer();
-    Navigation.mergeOptions(this.props.parentComponentId, {
-      bottomTabs: {
-        currentTabIndex: 1,
-        component: {
-          name: 'Investments',
-          passProps: {
-            tab: 'sp',
-          },
         },
       },
     });
@@ -61,7 +46,6 @@ class SideMenu extends Component {
         dismiss={() => {
           Navigation.dismissDrawer();
         }}
-        goToProductsTab={this.goToProductsTab}
       />
     );
   }

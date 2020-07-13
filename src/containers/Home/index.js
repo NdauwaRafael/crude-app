@@ -15,6 +15,9 @@ import {Icon, Button} from 'native-base';
 import {Navigation} from 'react-native-navigation';
 import {responsiveFontSize} from 'react-native-responsive-dimensions';
 import {getInitial} from '../../components/Navigation/partials/functions';
+import {RNNDrawer} from 'react-native-navigation-drawer-extension';
+import {bindActionCreators} from 'redux';
+import {GetUser} from '../../Redux/actions/auth/login';
 
 class Home extends Component {
   static options(passProps) {
@@ -40,6 +43,7 @@ class Home extends Component {
     global.currentScreen = 'HomeScreen';
 
     this.navigationEventListener = Navigation.events().bindComponent(this);
+    this.props.GetUser();
   }
 
   componentWillUnmount() {
@@ -67,7 +71,7 @@ class Home extends Component {
   }
 
   openDrawer() {
-    Navigation.showDrawer({
+    RNNDrawer.showDrawer({
       component: {
         name: 'navigation.Drawer',
         passProps: {
@@ -76,9 +80,12 @@ class Home extends Component {
           direction: 'left',
           dismissWhenTouchOutside: true,
           fadeOpacity: 0.6,
-          drawerScreenWidth: 0.9,
-          drawerScreenHeight: 1,
+          drawerScreenWidth: '75%' || 445, // Use relative to screen '%' or absolute
+          drawerScreenHeight: '100%' || 700,
           parentComponentId: this.props.componentId,
+          style: {
+            backgroundColor: '#fff',
+          },
         },
       },
     });
@@ -88,16 +95,14 @@ class Home extends Component {
 
   render() {
     const {user} = this.props;
-    let firstName = user.name
-      ? user.name.split(' ').slice(0, -1).join(' ')
-      : '';
+    let firstName = user ? user.name : '';
     return (
       <View style={{flex: 1}}>
         <ScrollView
           contentContainerStyle={{flexGrow: 2}}
           refreshControl={
             <RefreshControl
-              refreshing={this.state.refreshing}
+              refreshing={this.props.isLoadingUser}
               colors={['#ea178d']}
               onRefresh={() => this.UserInformation(true)}
             />
@@ -129,11 +134,7 @@ class Home extends Component {
                     <Button
                       transparent
                       iconLeft
-                      onPress={() =>
-                        Navigation.push(this.props.componentId, {
-                          component: {name: 'Notifications'},
-                        })
-                      }>
+                      onPress={() =>{}}>
                       <View style={styles.homepageIconContainer}>
                         {this.state.notifications ? (
                           <Text style={styles.homepageBadge} />
@@ -195,6 +196,7 @@ const styles = StyleSheet.create({
     paddingRight: '5%',
     paddingLeft: '5%',
     paddingTop: '5%',
+    backgroundColor: '#5c24fc',
   },
 
   salutationContent: {
@@ -255,15 +257,18 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps({loginData: {token, user}}) {
+function mapStateToProps({loginData: {token, user, isLoadingUser}}) {
   return {
     token,
     user,
+    isLoadingUser,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    GetUser: bindActionCreators(GetUser, dispatch),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

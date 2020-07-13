@@ -19,190 +19,182 @@ import {
 } from 'react-native-responsive-dimensions';
 import {Platform, StyleSheet, View} from 'react-native';
 
-const MenuContent = ({
-  user,
-  initial,
-  logout,
-  goToMenu,
-  dismiss,
-  goToProductsTab,
-}) => {
+const MenuContent = ({user, initial, logout, goToMenu, dismiss}) => {
   return (
-    <Container style={{flex: 1, backgroundColor: '#fff'}}>
-      <Content
+    <View
+      style={{
+        flex: 1,
+        paddingRight: responsiveFontSize(2),
+        paddingLeft: responsiveFontSize(2),
+        paddingTop: responsiveFontSize(2),
+        backgroundColor: '#fff',
+      }}>
+      <View
         style={{
-          paddingRight: responsiveFontSize(2),
-          paddingLeft: responsiveFontSize(2),
-          paddingTop: responsiveFontSize(2),
+          justifyContent: 'flex-end',
+          flexDirection: 'row',
+          paddingVertical: 5,
+          paddingHorizontal: 10,
+          maxHeight: 40,
+          flex: 1
         }}>
+        <Button
+          transparent
+          onPress={() => {
+            dismiss();
+          }}>
+          <Icon
+            style={{
+              color: '#ec148c',
+              fontWeight: '800',
+              fontSize: responsiveFontSize(4),
+            }}
+            type="EvilIcons"
+            name="close"
+          />
+        </Button>
+      </View>
+
+      <List style={{paddingBottom: responsiveHeight(10)}}>
+        <ListItem
+          itemHeader
+          first
+          thumbnail
+          style={{
+            flexDirection: 'row',
+            paddingBottom: responsiveFontSize(2),
+            paddingTop: responsiveFontSize(2),
+          }}>
+          <View style={style.avatarContainer}>
+            <Text style={style.userTitleAvatar}>{initial}</Text>
+          </View>
+
+          <View>
+            <Text
+              style={{
+                fontSize: responsiveFontSize(2.6),
+                fontWeight: '600',
+                textAlign: 'left',
+                alignSelf: 'stretch',
+                paddingBottom: 3,
+              }}>
+              {user.name}
+            </Text>
+            <Text note style={{fontSize: responsiveFontSize(2)}}>
+              Personal Profile
+            </Text>
+          </View>
+        </ListItem>
+
         <View
           style={{
-            justifyContent: 'flex-end',
-            flexDirection: 'row',
-            paddingVertical: 5,
-            paddingHorizontal: 10,
-            maxHeight: 40,
-          }}>
-          <Button
-            transparent
-            onPress={() => {
-              dismiss();
-            }}>
+            borderBottomColor: '#eee',
+            borderBottomWidth: 1,
+            marginLeft: responsiveFontSize(2),
+          }}
+        />
+
+        <ListItem
+          Icon
+          style={style.menuItem}
+          button
+          onPress={() => goToMenu('Profile')}>
+          <Left style={{maxWidth: '10%'}}>
             <Icon
-              style={{
-                color: '#ec148c',
-                fontWeight: '800',
-                fontSize: responsiveFontSize(4),
-              }}
-              type="EvilIcons"
-              name="close"
+              style={style.menuIcon}
+              active
+              type="SimpleLineIcons"
+              name="user"
             />
-          </Button>
-        </View>
+          </Left>
+          <Body>
+            <Text style={style.menuLabel}>Profile</Text>
+          </Body>
+        </ListItem>
 
-        <List style={{paddingBottom: responsiveHeight(10)}}>
-          <ListItem
-            itemHeader
-            first
-            thumbnail
-            style={{
-              flexDirection: 'row',
-              paddingBottom: responsiveFontSize(2),
-              paddingTop: responsiveFontSize(2),
-            }}>
-            <View style={style.avatarContainer}>
-              <Text style={style.userTitleAvatar}>{initial}</Text>
-            </View>
+        <ListItem
+          Icon
+          style={style.menuItem}
+          button
+          onPress={() => {
+            goToMenu('ComingSoon');
+          }}>
+          <Left style={{maxWidth: '10%'}}>
+            <Icon
+              style={style.menuIcon}
+              active
+              type="SimpleLineIcons"
+              name="bubble"
+            />
+          </Left>
+          <Body>
+            <Text style={style.menuLabel}>FAQs</Text>
+          </Body>
+        </ListItem>
 
-            <View>
-              <Text
-                style={{
-                  fontSize: responsiveFontSize(2.6),
-                  fontWeight: '600',
-                  textAlign: 'left',
-                  alignSelf: 'stretch',
-                  paddingBottom: 3,
-                }}>
-                {user.name}
-              </Text>
-              <Text note style={{fontSize: responsiveFontSize(2)}}>
-                Personal Profile
-              </Text>
-            </View>
-          </ListItem>
+        <View
+          style={{
+            borderBottomColor: '#eee',
+            borderBottomWidth: 1,
+            paddingTop: responsiveFontSize(1),
+            paddingBottom: responsiveFontSize(3.2),
+          }}
+        />
 
-          <View
-            style={{
-              borderBottomColor: '#eee',
-              borderBottomWidth: 1,
-              marginLeft: responsiveFontSize(2),
-            }}
-          />
+        <ListItem
+          Icon
+          style={style.menuItem}
+          button
+          onPress={() => {
+            goToMenu('ComingSoon');
+          }}>
+          <Left style={{maxWidth: '10%'}}>
+            <Icon
+              style={style.menuIcon}
+              active
+              type="SimpleLineIcons"
+              name="settings"
+            />
+          </Left>
+          <Body>
+            <Text style={style.menuLabel}>Login and Security</Text>
+          </Body>
+        </ListItem>
 
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => goToMenu('Profile')}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="user"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Profile</Text>
-            </Body>
-          </ListItem>
+        <ListItem
+          Icon
+          style={style.menuItem}
+          button
+          onPress={() => {
+            goToMenu('ComingSoon');
+          }}>
+          <Left style={{maxWidth: '10%'}}>
+            <Icon
+              style={style.menuIcon}
+              active
+              type="SimpleLineIcons"
+              name="question"
+            />
+          </Left>
+          <Body>
+            <Text style={style.menuLabel}>Help</Text>
+          </Body>
+        </ListItem>
 
-
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('FAQs');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="bubble"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>FAQs</Text>
-            </Body>
-          </ListItem>
-
-          <View
-            style={{
-              borderBottomColor: '#eee',
-              borderBottomWidth: 1,
-              paddingTop: responsiveFontSize(1),
-              paddingBottom: responsiveFontSize(3.2),
-            }}
-          />
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('Settings');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="settings"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Login and Security</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem
-            Icon
-            style={style.menuItem}
-            button
-            onPress={() => {
-              goToMenu('ComingSoon');
-            }}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                type="SimpleLineIcons"
-                name="question"
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Help</Text>
-            </Body>
-          </ListItem>
-
-          <ListItem Icon style={style.menuItem} button onPress={() => logout()}>
-            <Left style={{maxWidth: '10%'}}>
-              <Icon
-                style={style.menuIcon}
-                active
-                name={Platform.OS === 'ios' ? 'ios-power' : 'md-power'}
-              />
-            </Left>
-            <Body>
-              <Text style={style.menuLabel}>Logout</Text>
-            </Body>
-          </ListItem>
-        </List>
-      </Content>
-    </Container>
+        <ListItem Icon style={style.menuItem} button onPress={() => logout()}>
+          <Left style={{maxWidth: '10%'}}>
+            <Icon
+              style={style.menuIcon}
+              active
+              name={Platform.OS === 'ios' ? 'ios-power' : 'md-power'}
+            />
+          </Left>
+          <Body>
+            <Text style={style.menuLabel}>Logout</Text>
+          </Body>
+        </ListItem>
+      </List>
+    </View>
   );
 };
 

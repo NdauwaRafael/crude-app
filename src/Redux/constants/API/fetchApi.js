@@ -40,3 +40,15 @@ export const login = function (username, password) {
     }),
   });
 };
+
+export const user = function () {
+  return fetch(routes.route_user(changeBaseUrl()), {
+    timeout: timeout,
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'X-API-VERSION': 1,
+    },
+  });
+};
